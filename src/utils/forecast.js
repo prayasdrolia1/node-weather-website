@@ -16,7 +16,7 @@ const request = require('request')
 
 const forecast = (latitude, longitude, callback) => {
 
-    const url = 'https://api.darksky.net/forecast/3990cd51ecc55694d46b994abefe4b2e/' + latitude + ',' + longitude
+    const url = 'https://api.darksky.net/forecast/3990cd51ecc55694d46b994abefe4b2e/' + latitude + ',' + longitude + '?units=si'
 
     request({url, json:true}, (error, {body}) => {
         if(error) {
@@ -31,7 +31,7 @@ const forecast = (latitude, longitude, callback) => {
                 //temp = response.body.currently.temperature,
                 // rainProb = response.body.currently.precipProbability
                 
-                body.daily.data[0].summary + " It is currently " + body.currently.temperature + " degrees Fahrenheit out. The high tody is " + body.daily.data[0].temperatureHigh + ' with a low of ' + body.daily.data[0].temperatureLow + ". There is a " + body.currently.precipProbability + "% chance of rain."
+                body.daily.data[0].summary + " It is currently " + body.currently.temperature + " degrees celsius out. The high tody is " + body.daily.data[0].temperatureHigh + ' with a low of ' + body.daily.data[0].temperatureLow + ". There is a " + body.currently.precipProbability + "% chance of rain."
             )
         }
     })
